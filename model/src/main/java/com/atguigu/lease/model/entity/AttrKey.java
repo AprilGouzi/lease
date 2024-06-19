@@ -14,6 +14,9 @@ public class AttrKey extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 支付方式，标签，配套，租期...
+     */
     @Schema(description = "属性key")
     @TableField(value = "name")
     private String name;
