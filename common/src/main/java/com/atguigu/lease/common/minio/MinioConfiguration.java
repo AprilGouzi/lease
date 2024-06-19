@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * version 1.0
  */
 @Configuration
-@EnableConfigurationProperties(MinioConfiguration.class)
+@EnableConfigurationProperties(MinioProperties.class)
 public class MinioConfiguration {
 
     @Autowired
