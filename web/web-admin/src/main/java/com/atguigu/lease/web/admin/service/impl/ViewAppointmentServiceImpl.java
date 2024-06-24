@@ -25,7 +25,6 @@ public class ViewAppointmentServiceImpl extends ServiceImpl<ViewAppointmentMappe
     @Override
     public IPage<AppointmentVo> pageAppointmentByQuery(IPage<AppointmentVo> page, AppointmentQueryVo queryVo) {
         return viewAppointmentMapper.pageAppointmentByQuery(page,queryVo);
-        ;
     }
 }
 
