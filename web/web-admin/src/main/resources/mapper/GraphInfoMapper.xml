@@ -5,11 +5,11 @@
 <mapper namespace="com.atguigu.lease.web.admin.mapper.GraphInfoMapper">
 
     <select id="selectListByItemTypeAndId" resultType="com.atguigu.lease.web.admin.vo.graph.GraphVo">
-        select name,
+        SELECT name,
                url
-        from graph_info
-        where is_deleted = 0
-          and item_type = #{itemType}
-          and item_id = #{id}
+        FROM graph_info
+        WHERE is_deleted = 0
+          AND item_type = #{itemType}
+          AND item_id = #{id}
     </select>
 </mapper>
