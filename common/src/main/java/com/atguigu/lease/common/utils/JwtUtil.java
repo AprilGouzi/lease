@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class JwtUtil {
 
-    private static long tokenExpiration = 60 * 60 * 1000 * 24 * 30L;
+    private static long tokenExpiration = 60 * 60 * 1000L;
     private static SecretKey secretKey = Keys.hmacShaKeyFor("M0PKKI6pYGVWWfDZw90a0lTpGYX1d4AQ".getBytes());
 
     public static String createToken(Long userId, String username) {
@@ -38,7 +38,7 @@ public class JwtUtil {
             JwtParser jwtParser = Jwts.parserBuilder()
                     .setSigningKey(secretKey) // 签名密钥
                     .build();
-            return jwtParser.parseClaimsJwt(token) // 方法将传入的 token 进行解析
+            return jwtParser.parseClaimsJws(token) // 方法将传入的 token 进行解析
                     .getBody(); // 从jws对象中获取声明信息，返回一个claims对象
         } catch (ExpiredJwtException e) {
             // JWT验证异常，令牌无效
@@ -49,8 +49,8 @@ public class JwtUtil {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(JwtUtil.createToken(2L, "user"));
-    }
+    //public static void main(String[] args) {
+    //    System.out.println(JwtUtil.createToken(1L, "用户-888888"));
+    //}
 
 }

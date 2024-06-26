@@ -22,6 +22,7 @@ spring:
       port: 6379
       database: 0
 
+
 # 打印框架生成的sql语句，便于调试
 mybatis-plus:
   configuration:

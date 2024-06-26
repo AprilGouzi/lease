@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author 囍崽
  * version 1.0
+ * MybatisPlus 配置类
  */
 @Configuration
 @MapperScan("com.atguigu.lease.web.*.mapper")
@@ -18,7 +19,7 @@ public class MybatisPlusConfiguration {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL)); // 分页
         return interceptor;
     }
 
