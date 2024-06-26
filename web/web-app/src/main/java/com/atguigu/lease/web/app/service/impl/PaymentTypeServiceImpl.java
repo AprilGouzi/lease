@@ -1,10 +1,18 @@
 package com.atguigu.lease.web.app.service.impl;
 
+import com.atguigu.lease.common.exception.LeaseException;
+import com.atguigu.lease.common.result.ResultCodeEnum;
 import com.atguigu.lease.model.entity.PaymentType;
+import com.atguigu.lease.model.entity.RoomPaymentType;
 import com.atguigu.lease.web.app.mapper.PaymentTypeMapper;
 import com.atguigu.lease.web.app.service.PaymentTypeService;
+import com.atguigu.lease.web.app.service.RoomPaymentTypeService;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -15,6 +23,13 @@ import org.springframework.stereotype.Service;
 public class PaymentTypeServiceImpl extends ServiceImpl<PaymentTypeMapper, PaymentType>
     implements PaymentTypeService{
 
+    @Autowired
+    private RoomPaymentTypeService roomPaymentTypeService;
+
+    @Override
+    public List<PaymentType> getByRoomId(Long id) {
+        return null;
+    }
 }
 
 
