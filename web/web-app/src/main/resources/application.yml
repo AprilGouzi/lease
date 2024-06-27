@@ -27,4 +27,3 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 springdoc:
   default-flat-param-object: true # 把json格式展开
-
