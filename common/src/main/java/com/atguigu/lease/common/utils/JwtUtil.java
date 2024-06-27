@@ -15,7 +15,7 @@ import java.util.Date;
 public class JwtUtil {
 
     private static long tokenExpiration = 60 * 60 * 1000L;
-    private static SecretKey secretKey = Keys.hmacShaKeyFor("".getBytes());
+    private static SecretKey secretKey = Keys.hmacShaKeyFor("M0PKKI6pYGVWWfDZw90a0lTpGYX1d4AQ".getBytes());
 
     public static String createToken(Long userId, String username) {
         String token = Jwts.builder()
