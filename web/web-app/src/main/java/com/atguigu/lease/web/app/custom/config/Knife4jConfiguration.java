@@ -40,7 +40,7 @@ public class Knife4jConfiguration {
                 .pathsToMatch(
                         "/app/history/**",
                         "/app/appointment/**",
-                        "/app/agreement"
+                        "/app/agreement/**"
                 )
                 .build();
     }

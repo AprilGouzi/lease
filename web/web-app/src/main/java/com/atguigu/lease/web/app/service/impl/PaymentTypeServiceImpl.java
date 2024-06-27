@@ -15,20 +15,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
-* @author liubo
-* @description 针对表【payment_type(支付方式表)】的数据库操作Service实现
-* @createDate 2023-07-26 11:12:39
-*/
+ * @author liubo
+ * @description 针对表【payment_type(支付方式表)】的数据库操作Service实现
+ * @createDate 2023-07-26 11:12:39
+ */
 @Service
 public class PaymentTypeServiceImpl extends ServiceImpl<PaymentTypeMapper, PaymentType>
-    implements PaymentTypeService{
+        implements PaymentTypeService {
 
     @Autowired
-    private RoomPaymentTypeService roomPaymentTypeService;
+    private PaymentTypeMapper paymentTypeMapper;
 
     @Override
     public List<PaymentType> getByRoomId(Long id) {
-        return null;
+        return paymentTypeMapper.selectListByRoomId(id);
     }
 }
 
