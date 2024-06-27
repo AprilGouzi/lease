@@ -102,13 +102,13 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         BeanUtils.copyProperties(roomInfo, roomDetailVo);
 
         roomDetailVo.setGraphVoList(graphVoList);
-        roomDetailVo.setAttrValueVoList(attrValueList);
+        roomDetailVo.setLeaseTermList(leaseTermList);
+        roomDetailVo.setFacilityInfoList(facilityInfoList);
         roomDetailVo.setLabelInfoList(labelInfoList);
         roomDetailVo.setPaymentTypeList(paymentTypeList);
+        roomDetailVo.setAttrValueVoList(attrValueList);
         roomDetailVo.setFeeValueVoList(feeValueList);
         roomDetailVo.setApartmentItemVo(apartmentItemVo);
-        roomDetailVo.setFacilityInfoList(facilityInfoList);
-        roomDetailVo.setLeaseTermList(leaseTermList);
 
         return roomDetailVo;
     }
