@@ -1,5 +1,6 @@
 package com.atguigu.lease.web.admin.service.impl;
 
+import com.atguigu.lease.common.constant.RedisConstant;
 import com.atguigu.lease.model.entity.*;
 import com.atguigu.lease.model.enums.ItemType;
 import com.atguigu.lease.web.admin.mapper.*;
@@ -16,6 +17,7 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -72,6 +74,9 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
     @Autowired
     private LeaseTermMapper leaseTermMapper;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Override
     public void saveOrUpdateRoom(RoomSubmitVo roomSubmitVo) {
         boolean isUpdate = roomSubmitVo.getId() != null;
@@ -109,6 +114,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
             LambdaQueryWrapper<RoomLeaseTerm> roomLeaseTermQueryWrapper = new LambdaQueryWrapper<>();
             roomLeaseTermQueryWrapper.eq(RoomLeaseTerm::getRoomId, roomSubmitVo.getId());
             roomLeaseTermService.remove(roomLeaseTermQueryWrapper);
+
+            redisTemplate.delete(RedisConstant.ADMIN_LOGIN_PREFIX + roomSubmitVo.getId());
         }
 
         //1. 保存新的graphInfoList
@@ -279,6 +286,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         LambdaQueryWrapper<RoomLeaseTerm> leaseTermQueryWrapper = new LambdaQueryWrapper<>();
         leaseTermQueryWrapper.eq(RoomLeaseTerm::getRoomId, id);
         roomLeaseTermService.remove(leaseTermQueryWrapper);
+
+        redisTemplate.delete(RedisConstant.ADMIN_LOGIN_PREFIX + id);
 
     }
 }
