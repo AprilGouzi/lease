@@ -8,7 +8,7 @@
             parameterType="java.lang.Long">
         SELECT av.id,
                av.name,
-               av.attr_key_id
+               av.attr_key_id,
             ak.name attr_key_name
         FROM attr_value av
                  LEFT JOIN attr_key ak ON av.attr_key_id = ak.id AND ak.is_deleted = 0

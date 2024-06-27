@@ -11,7 +11,7 @@
                unit
         FROM lease_term
         WHERE is_deleted = 0
-          AND id IN (SELECT
+          AND id IN (SELECT lease_term_id
                      FROM room_lease_term
                      WHERE is_deleted = 0
                        AND room_id = #{id})

@@ -106,4 +106,32 @@
           AND is_release = 1
           AND apartment_id = #{id}
     </select>
+    <select id="pageItemByApartmentId" resultMap="RoomItemVoMap">
+        SELECT ri.id,
+               ri.room_number,
+               ri.rent,
+               ai.id apartment_id,
+               ai.name,
+               ai.introduction,
+               ai.district_id,
+               ai.district_name,
+               ai.city_id,
+               ai.city_name,
+               ai.province_id,
+               ai.province_name,
+               ai.address_detail,
+               ai.latitude,
+               ai.longitude,
+               ai.phone,
+               ai.is_release
+        FROM room_info ri
+                 LEFT JOIN apartment_info ai ON ri.apartment_id = ai.id AND ai.is_deleted = 0
+        WHERE ri.is_deleted = 0
+          AND ri.is_release = 1
+          AND ai.id = #{id}
+          AND ri.id NOT IN (SELECT room_id
+                            FROM lease_agreement
+                            WHERE is_deleted = 0
+                              AND status IN (2, 5))
+    </select>
 </mapper>

@@ -16,9 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/app/apartment")
 public class ApartmentController {
 
+    @Autowired
+    private ApartmentInfoService service;
+
     @Operation(summary = "根据id获取公寓信息")
     @GetMapping("getDetailById")
     public Result<ApartmentDetailVo> getDetailById(@RequestParam Long id) {
+        //ApartmentDetailVo apartmentDetailVo = service.getDetailById(id);
+        //return Result.ok(apartmentDetailVo);
         return Result.ok();
     }
 }

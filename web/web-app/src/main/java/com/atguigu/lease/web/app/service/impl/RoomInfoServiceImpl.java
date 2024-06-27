@@ -107,8 +107,15 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         roomDetailVo.setPaymentTypeList(paymentTypeList);
         roomDetailVo.setFeeValueVoList(feeValueList);
         roomDetailVo.setApartmentItemVo(apartmentItemVo);
+        roomDetailVo.setFacilityInfoList(facilityInfoList);
+        roomDetailVo.setLeaseTermList(leaseTermList);
 
         return roomDetailVo;
+    }
+
+    @Override
+    public IPage<RoomItemVo> pageItemByApartmentId(IPage<RoomItemVo> page, Long id) {
+        return roomInfoMapper.pageItemByApartmentId(page, id);
     }
 }
 
