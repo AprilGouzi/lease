@@ -34,6 +34,18 @@ public class Knife4jConfiguration {
     }
 
     @Bean
+    public GroupedOpenApi personAPI() {
+        return GroupedOpenApi.builder()
+                .group("个人信息")
+                .pathsToMatch(
+                        "/app/history/**",
+                        "/app/appointment/**",
+                        "/app/agreement"
+                )
+                .build();
+    }
+
+    @Bean
     public GroupedOpenApi lookForRoomAPI() {
         return GroupedOpenApi.builder().group("找房信息")
                 .pathsToMatch(

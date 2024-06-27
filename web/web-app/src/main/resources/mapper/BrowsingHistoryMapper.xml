@@ -27,7 +27,7 @@
                  LEFT JOIN room_info ri ON bh.room_id = ri.id AND ri.is_deleted = 0
                  LEFT JOIN apartment_info ai ON ri.apartment_id = ai.id AND ai.is_deleted = 0
         WHERE bh.is_deleted = 0
-          AND bh.user_id = #{user_id}
+          AND bh.user_id = #{userId}
         ORDER BY browse_time DESC
     </select>
 
